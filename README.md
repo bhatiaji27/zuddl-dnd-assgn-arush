@@ -70,5 +70,3 @@ To handle errors in the API, consider implementing the following strategies:
 
 - *Monitoring:*
   - Set up monitoring tools to receive alerts for critical errors, ensuring quick response and resolution.
-
-Remember to thoroughly document error handling strategies and guidelines for developers using the API.
