@@ -1,25 +1,74 @@
-# Getting Started with Create React App
+# Project README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table and API Changes
 
-## Available Scripts
+### 1. Custom Stages for Boards
 
-In the project directory, you can run:
+If users are allowed to create and edit stages for a particular board, the following changes might be necessary:
 
-### `npm start`
+#### Tables:
+- *BoardStages Table:*
+  - Add a new table to store custom stages for each board.
+  - Fields: boardId, stageOrder, stageName, etc.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### API Endpoints:
+- *Create Custom Stage:*
+  - Endpoint: /api/boards/:boardId/stages
+  - Method: POST
+  - Parameters: { stageName, stageOrder }
+  
+- *Update Custom Stage:*
+  - Endpoint: /api/boards/:boardId/stages/:stageId
+  - Method: PUT
+  - Parameters: { stageName, stageOrder }
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Task Comments
 
-### `npm run build`
+If users can comment on tasks, additional tables and API endpoints are needed:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Tables:
+- *TaskComments Table:*
+  - Add a new table to store comments related to tasks.
+  - Fields: commentId, taskId, userId, commentText, timestamp, etc.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### API Endpoints:
+- *Create Task Comment:*
+  - Endpoint: /api/tasks/:taskId/comments
+  - Method: POST
+  - Parameters: { userId, commentText }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- *Get Task Comments:*
+  - Endpoint: /api/tasks/:taskId/comments
+  - Method: GET
+
+- *Update Task Comment:*
+  - Endpoint: /api/tasks/:taskId/comments/:commentId
+  - Method: PUT
+  - Parameters: { commentText }
+
+## Error Handling
+
+To handle errors in the API, consider implementing the following strategies:
+
+- *Consistent Error Responses:*
+  - Ensure that error responses follow a consistent format to make it easier for clients to handle them.
+
+- *HTTP Status Codes:*
+  - Use appropriate HTTP status codes to indicate the success or failure of a request.
+
+- *Error Messages:*
+  - Include meaningful error messages in the response payload to help developers identify and resolve issues.
+
+- *Logging:*
+  - Implement logging mechanisms to capture errors for debugging purposes.
+
+- *Rate Limiting:*
+  - Implement rate limiting to protect against abuse and to ensure fair usage of the API.
+
+- *Authentication and Authorization Errors:*
+  - Clearly distinguish between authentication errors and authorization errors to provide specific guidance to users.
+
+- *Monitoring:*
+  - Set up monitoring tools to receive alerts for critical errors, ensuring quick response and resolution.
+
+Remember to thoroughly document error handling strategies and guidelines for developers using the API.
