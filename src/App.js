@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import { Row, Col, Card, CardBody } from 'reactstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { generateQuoteMap } from './dnd/mockData';
+
+import Board from './dnd/board/Board';
+
+export default function App() {
+  const data = {
+    medium: generateQuoteMap(100),
+    large: generateQuoteMap(500),
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Row className="">
+        <Col xs={12}>
+          <Card>
+            <CardBody>
+              <h5>ZUDDL</h5>
+              
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+
+      <Board initial={data.medium} withScrollableColumns />
+    </>
   );
 }
-
-export default App;
