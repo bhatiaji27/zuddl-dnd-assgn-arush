@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   padding-bottom: 0;
   transition: background-color 0.2s ease, opacity 0.1s ease;
   user-select: none;
-  width: 250px;
+  width: 100%;
 `;
 
 const DropZone = styled.div`
@@ -43,12 +43,12 @@ const DropZone = styled.div`
 const ScrollContainer = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
-  height: 60vh;
+  max-height: 60vh;
+  min-height: 30vh;
+  height: max-content;
 `;
 
-/* stylelint-disable block-no-empty */
 const Container = styled.div``;
-/* stylelint-enable */
 
 const InnerQuoteList = React.memo(function InnerQuoteList(props) {
   return props.quotes.map((quote, index) => (

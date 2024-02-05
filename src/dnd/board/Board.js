@@ -9,7 +9,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 const Container = styled.div`
   background-color: ${colors.B100};
-  min-height: 90vh;
+  min-height: 87vh;
   /* like display:flex but will allow bleeding over the window width */
   min-width: 100vw;
   display: inline-flex;
@@ -20,7 +20,7 @@ const Board = ({
   initial,
   useClone,
   containerHeight,
-  withScrollableColumns
+  withScrollableColumns,
 }) => {
   const [columns, setColumns] = useState(initial);
 
@@ -42,7 +42,7 @@ const Board = ({
 
       const orderedColumns = {
         ...columns,
-        [result.source.droppableId]: withQuoteRemoved
+        [result.source.droppableId]: withQuoteRemoved,
       };
       setColumns(orderedColumns);
       return;
@@ -76,11 +76,19 @@ const Board = ({
     const data = reorderQuoteMap({
       quoteMap: columns,
       source,
-      destination
+      destination,
     });
 
     setColumns(data.quoteMap);
   };
+
+  const addEntryToColumnHandler = (columnName, entry) => {
+    const updatedColumns = {
+      ...columns,
+      [columnName]: [...columns[columnName], entry],
+    };
+    setColumns(updatedColumns);
+  }
 
   return (
     <>
@@ -95,15 +103,17 @@ const Board = ({
           {(provided) => (
             <Container ref={provided.innerRef} {...provided.droppableProps}>
               {ordered.map((key, index) => (
-                <Column
-                  key={key}
-                  index={index}
-                  title={key}
-                  quotes={columns[key]}
-                  isScrollable={withScrollableColumns}
-                  isCombineEnabled={isCombineEnabled}
-                  useClone={useClone}
-                />
+                  <Column
+                    key={key}
+                    index={index}
+                    title={key}
+                    quotes={columns[key]}
+                    isScrollable={withScrollableColumns}
+                    isCombineEnabled={isCombineEnabled}
+                    useClone={useClone}
+                    ordered={ordered}
+                    addEntryToColumn={addEntryToColumnHandler}
+                  />
               ))}
               {provided.placeholder}
             </Container>
@@ -115,11 +125,11 @@ const Board = ({
 };
 
 Board.defaultProps = {
-  isCombineEnabled: false
+  isCombineEnabled: false,
 };
 
 Board.propTypes = {
-  isCombineEnabled: PropTypes.bool
+  isCombineEnabled: PropTypes.bool,
 };
 
 export default Board;
