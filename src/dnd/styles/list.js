@@ -30,11 +30,9 @@ const Wrapper = styled.div`
   width: 250px;
 `;
 
-const scrollContainerHeight = 250;
-
 const DropZone = styled.div`
   /* stop the list collapsing when empty */
-  min-height: ${scrollContainerHeight}px;
+  min-height: 30vh;
   /*
     not relying on the items for a margin-bottom
     as it will collapse when the list is empty
@@ -45,7 +43,7 @@ const DropZone = styled.div`
 const ScrollContainer = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
-  max-height: ${scrollContainerHeight}px;
+  height: 60vh;
 `;
 
 /* stylelint-disable block-no-empty */

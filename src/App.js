@@ -16,12 +16,12 @@ export default function App() {
 
   return (
     <>
-      <Row className="">
+      <Row>
         <Col xs={12}>
           <Card>
             <CardBody>
               <h5>ZUDDL</h5>
-              
+
             </CardBody>
           </Card>
         </Col>

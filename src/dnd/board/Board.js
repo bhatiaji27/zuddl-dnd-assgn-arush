@@ -9,7 +9,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 const Container = styled.div`
   background-color: ${colors.B100};
-  min-height: 100vh;
+  min-height: 90vh;
   /* like display:flex but will allow bleeding over the window width */
   min-width: 100vw;
   display: inline-flex;
