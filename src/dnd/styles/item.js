@@ -19,24 +19,6 @@ const getBorderColor = (isDragging, authorColors) =>
 
 const imageSize = 40;
 
-// const CloneBadge = styled.div`
-//   background: #79f2c0;
-//   bottom: ${grid / 2}px;
-//   border: 2px solid #57d9a3;
-//   border-radius: 50%;
-//   box-sizing: border-box;
-//   font-size: 10px;
-//   position: absolute;
-//   right: -${imageSize / 3}px;
-//   top: -${imageSize / 3}px;
-//   transform: rotate(40deg);
-//   height: ${imageSize}px;
-//   width: ${imageSize}px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
 const Container = styled.a`
   border-radius: ${borderRadius}px;
   border: 2px solid transparent;
@@ -143,7 +125,6 @@ function QuoteItem(props) {
       <Content>
         <BlockQuote>{quote.content}</BlockQuote>
         <Footer>
-          {/* <p>{quote.author.name}</p> */}
           <Avatar src={quote.author?.avatarUrl} alt={quote.author.name} />
         </Footer>
       </Content>
